@@ -1,53 +1,289 @@
 <!DOCTYPE html>
-<html lang="pt-PT">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eagle's Eye | 5º CTA</title>
+    <meta name="description" content="Portal oficial de documentação e distribuição de materiais do workshop de visão computacional no 5º CTA.">
+    <meta name="theme-color" content="#050505">
+    
+    <!-- Caminho atualizado para o CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <title>Projeto Olhos de Águia | Workshop 5º CTA</title>
+    
+    <!-- Caminho atualizado para o Favicon da lista -->
+    <link rel="shortcut icon" href="./assets/icons/jhon-logo-favicon.ico" type="image/x-icon">
+    
+    <style>
+        .terminal-box {
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 20px 0;
+            font-family: monospace;
+            color: #58a6ff;
+            overflow-x: auto;
+        }
+        .section-title-svg {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        /* Ajuste para ícones importados manterem o alinhamento */
+        .section-icon, .btn-icon, .header-logo-img {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <header class="hero">
-        <div class="container">
-            <h1>Eagle's Eye</h1>
-            <p>Visão Computacional Embarcada & Autonomia em Drones</p>
-            <span class="badge">Workshop 5º CTA - Junho 2026</span>
+    <div class="bg-wrapper"><div class="grid-lines"></div></div>
+    <div class="god-rays"></div>
+
+    <header class="main-header header-with-back">
+        <div class="header-pill" style="margin: 0 auto;">
+            <span class="header-text">Workshop 5º CTA <span class="divider"></span> Eagle's Eye</span>
         </div>
     </header>
 
-    <main class="container">
-        <section class="card">
-            <h2>📚 Masterclass & Documentação</h2>
-            <p>Documentação da arquitetura de hardware (Baixa Camada) e processamento lógico (Alta Camada).</p>
-            <div class="action-group">
-                <a href="assets/masterclass.pdf" target="_blank" class="btn btn-primary">Descarregar Masterclass (PDF)</a>
+    <main class="content-canvas">
+        
+        <!-- HERO DO WORKSHOP -->
+        <section class="course-hero">
+            <div class="hero-image-container" style="background: rgba(88, 166, 255, 0.1); border-radius: 12px; padding: 20px; display: flex; justify-content: center; align-items: center;">
+                <!-- Ícone Eagle da lista (Hero) -->
+                <img src="./assets/icons/eagle-icon.svg" alt="Ícone Eagle" width="80" height="80">
+            </div>
+            
+            <div class="course-info">
+                <div class="course-meta">
+                    <div class="category-group">
+                        <span class="pill-cat" style="background: rgba(88, 166, 255, 0.2); color: #58a6ff;">Arquitetura Aberta</span>
+                        <div class="inner-sep"></div>
+                    </div>
+                    <span class="pill-dur">16 e 17 Jun</span>
+                </div>
+                
+                <h1 class="course-title">Visão Computacional e Autonomia em Drones</h1>
+                <p style="color: #8b949e; margin-bottom: 24px; font-size: 1.1rem; max-width: 500px;">Documentação oficial e scripts em Python (OpenCV) para processamento embarcado de imagens e integração via MAVLink.</p>
+                
+                <!-- Caminho atualizado para o PDF exato -->
+                <a href="assets/Material_Master_Class-6.pdf" target="_blank" rel="noopener noreferrer" class="btn-download">
+                    BAIXAR MASTERCLASS (PDF)
+                    <!-- Ícone Download da lista -->
+                    <img src="./assets/icons/download.svg" alt="" width="14" height="14" class="btn-icon">
+                </a>
             </div>
         </section>
 
-        <section class="card">
-            <h2>💻 Scripts & Integração MAVLink</h2>
-            <p>Testa os algoritmos de rastreamento de alvos (OpenCV) e o envio de comandos de voo na tua máquina local.</p>
-            
-            <div class="code-block">
-                <div class="code-header">
-                    <span>Terminal</span>
-                    <button id="copyBtn" class="btn-copy">Copiar</button>
-                </div>
-                <pre><code id="cloneCommand">git clone https://github.com/Jhon-Victor-Ramos/workshop-5-CTA-olhos-de-aguia.git</code></pre>
+        <!-- CÓDIGO FONTE E SCRIPTS -->
+        <section class="materials-section" style="margin-top: 60px;">
+            <div class="section-title-svg">
+                <!-- Mantido SVG inline de terminal pois não está na lista -->
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#58a6ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+                <h3 style="font-size: 1.5rem;">Scripts & Códigos Python</h3>
             </div>
             
-            <div class="action-group">
-                <a href="https://github.com/Jhon-Victor-Ramos/workshop-5-CTA-olhos-de-aguia/archive/refs/heads/main.zip" class="btn btn-outline">Descarregar Código-Fonte (.zip)</a>
+            <p style="color: #8b949e; margin-bottom: 15px;">Para rodar os algoritmos de visão computacional na sua máquina, instale as bibliotecas <code>opencv-python</code>, <code>numpy</code> e <code>pymavlink</code>. Clone o repositório abaixo:</p>
+            
+            <div class="terminal-box" id="cloneCommand">
+                git clone https://github.com/Jhon-Victor-Ramos/workshop-5-CTA-olhos-de-aguia.git
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+                <!-- Botão de copiar com ID para o main.js -->
+                <button id="copyBtn" class="btn-download shadow-gray" style="background: #21262d; border: 1px solid #30363d; color: #c9d1d9; cursor: pointer;">
+                    COPIAR COMANDO
+                    <!-- Ícone Share da lista -->
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                </button>
+
+                <a href="https://github.com/Jhon-Victor-Ramos/workshop-5-CTA-olhos-de-aguia/archive/refs/heads/main.zip" target="_blank" rel="noopener noreferrer" class="btn-download shadow-blue" style="background: transparent; border: 1px solid #58a6ff; color: #58a6ff;">
+                    BAIXAR CÓDIGO-FONTE (.ZIP)
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                </a>
             </div>
         </section>
+
+        <!-- CARROSSEL DE MATERIAIS PARA ESTUDO -->
+        <section class="materials-section" style="margin-top: 60px;">
+            <div class="section-title-svg">
+                <!-- Ícone Book da lista -->
+                <img src="./assets/icons/book.svg" alt="" width="24" height="24" class="section-icon">
+                <h3 style="font-size: 1.5rem;">Materiais recomendados</h3>
+            </div>
+            
+            <div class="carousel-wrapper">
+                <!-- Seta Esquerda da lista -->
+                <button id="js-prev-btn" class="nav-arrow" aria-label="Anterior">
+                    <img src="./assets/icons/prev-arrow.svg" alt="Seta Esquerda" class="arrow-icon">
+                </button>
+
+                <div id="js-materials-grid" class="carousel-track">
+
+                    <a href="https://ardupilot.org/copter/" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-color: #21262d; display: flex; align-items: center; justify-content: center;">
+                            <img src="./assets/icons/logo-material-didatico.svg" alt="" width="40" height="40">
+                        </div>
+                        <div class="card-content">
+                            <span class="type-badge" style="border-color: #58a6ff; color: #58a6ff;">Baixa Camada</span>
+                            <h4>Documentação Oficial ArduCopter</h4>
+                            <span class="channel-name">ArduPilot</span>
+                            <p>A "bíblia" do sistema de voo. Mostra tudo sobre a Pixhawk, calibração e parâmetros avançados.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://oscarliang.com/lipo-battery-guide/" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-color: #21262d; display: flex; align-items: center; justify-content: center;">
+                            <img src="./assets/icons/logo-material-didatico.svg" alt="" width="40" height="40" style="filter: hue-rotate(140deg);">
+                        </div>
+                        <div class="card-content">
+                            <span class="type-badge" style="border-color: #e34c26; color: #e34c26;">Segurança</span>
+                            <h4>Guia de Segurança de Baterias LiPo</h4>
+                            <span class="channel-name">Oscar Liang</span>
+                            <p>Riscos operacionais, tensão mínima de voo (3.0V) e o armazenamento seguro na bancada (3.85V).</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.youtube.com/watch?v=WNirlvAKtC4" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-color: #21262d; display: flex; align-items: center; justify-content: center;">
+                            <img src="./assets/icons/presentation-chart.svg" alt="" width="40" height="40">
+                        </div>
+                        <div class="card-content">
+                            <span class="type-badge" style="border-color: #f85149; color: #f85149;">Vídeo</span>
+                            <h4>Drone PID Tuning Explained</h4>
+                            <span class="channel-name">YouTube</span>
+                            <p>Explicação visual em animação 3D de como o drone se estabiliza fisicamente contra o vento.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://ardupilot.org/dev/docs/companion-computers.html" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-color: #21262d; display: flex; align-items: center; justify-content: center;">
+                            <img src="./assets/icons/logo-material-didatico.svg" alt="" width="40" height="40" style="filter: hue-rotate(90deg);">
+                        </div>
+                        <div class="card-content">
+                            <span class="type-badge" style="border-color: #3fb950; color: #3fb950;">Alta Camada</span>
+                            <h4>Companion Computers</h4>
+                            <span class="channel-name">ArduPilot Dev</span>
+                            <p>Arquitetura física e configuração para conectar um microcomputador (Raspberry Pi) à Pixhawk.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://github.com/ardupilot/pymavlink" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-color: #21262d; display: flex; align-items: center; justify-content: center;">
+                            <img src="./assets/icons/logo-python.svg" alt="" width="40" height="40">
+                        </div>
+                        <div class="card-content">
+                            <span class="type-badge" style="border-color: #e3b341; color: #e3b341;">Biblioteca</span>
+                            <h4>Repositório Oficial Pymavlink</h4>
+                            <span class="channel-name">GitHub</span>
+                            <p>A biblioteca responsável por enviar comandos e sobrescrever RC (override) utilizando Python.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.youtube.com/watch?v=oXlwWbU8l2o" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-color: #21262d; display: flex; align-items: center; justify-content: center;">
+                             <img src="./assets/icons/presentation-chart.svg" alt="" width="40" height="40" style="filter: hue-rotate(280deg);">
+                        </div>
+                        <div class="card-content">
+                            <span class="type-badge" style="border-color: #a371f7; color: #a371f7;">Vídeo</span>
+                            <h4>OpenCV Course - Tutorial Python</h4>
+                            <span class="channel-name">freeCodeCamp</span>
+                            <p>Curso abordando como o computador processa matrizes de pixels e detecta contornos na imagem.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://mavlink.io/en/about/overview.html" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-color: #21262d; display: flex; align-items: center; justify-content: center;">
+                            <img src="./assets/icons/external-link.svg" alt="" width="40" height="40">
+                        </div>
+                        <div class="card-content">
+                            <span class="type-badge" style="border-color: #8b949e; color: #8b949e;">Protocolo</span>
+                            <h4>Overview: Protocolo MAVLink</h4>
+                            <span class="channel-name">MAVLink Docs</span>
+                            <p>Entenda como a estrutura de dados funciona sem criptografia nativa e como as mensagens operam.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.dedrone.com/white-papers/counter-uas" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-color: #21262d; display: flex; align-items: center; justify-content: center;">
+                            <img src="./assets/icons/logo-material-didatico.svg" alt="" width="40" height="40" style="filter: hue-rotate(0deg);">
+                        </div>
+                        <div class="card-content">
+                            <span class="type-badge" style="border-color: #ff7b72; color: #ff7b72;">Cibernética</span>
+                            <h4>Tecnologias Anti-Drone (C-UAS)</h4>
+                            <span class="channel-name">Dedrone</span>
+                            <p>Aprofundamento em guerra eletrônica: spoofing de GPS, interferência de telemetria e ataques lógicos.</p>
+                        </div>
+                    </a>
+                    
+                    <a href="https://youtube.com/playlist?list=PLRCchDl13FVkp0AHYTX3Gcn1S1PhBTcea&si=bHvuLYqzav1ZsW_w" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-image: url('https://i.ytimg.com/vi/972Z_QBTgM8/hqdefault.jpg?sqp=-oaymwEcCPYBEIoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBtGB9GjrxxWMt8NfL6eIWdg281DQ');"></div>
+                        <div class="card-content">
+                            <span class="type-badge">Playlist</span>
+                            <h4>Construa seu Drone</h4>
+                            <span class="channel-name">a Revisada</span>
+                            <p>Playlist que ensina a montar drones e configurá-los.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://youtube.com/playlist?list=PL5TJqBvpXQv729nb3vdeP4E87hLark5q9" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-image: url('https://i.ytimg.com/vi/RSkbjZZb-1c/hq720.jpg?sqp=-oaymwEXCNAFEJQDSFryq4qpAwkIARUAAIhCGAE=&rs=AOn4CLAlKt-TfOf0aCLg8DWBNAQu490-dA');"></div>
+                        <div class="card-content">
+                            <span class="type-badge">Playlist</span>
+                            <h4>Introdução à Visão Computacional</h4>
+                            <span class="channel-name">Programação Dinâmica</span>
+                            <p>Nesta playlist você vai entender o que é visão computacional e aprendizado de máquina.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.youtube.com/watch?v=cGxv8tOaA7I" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-color: #21262d; display: flex; align-items: center; justify-content: center;">
+                            <img src="./assets/icons/presentation-chart.svg" alt="" width="40" height="40" style="filter: hue-rotate(280deg);">
+                        </div>
+                        <div class="card-content">
+                            <span class="type-badge">Live</span>
+                            <h4>Primeiros passos com Pytorch | Deep Learning #1</h4>
+                            <span class="channel-name">Programação Dinâmica</span>
+                            <p>Live feita para introduzir o conteúdo de PyThorch e também redes neurais.</p>
+                        </div>
+                    </a>
+
+                    <a href="https://www.datacamp.com/pt/blog/yolo-object-detection-explained" target="_blank" rel="noopener noreferrer" class="material-card">
+                        <div class="card-thumb" style="background-image: url('https://images.datacamp.com/image/upload/v1664382700/Object_detection_illustrated_from_image_recognition_and_localization_704ca34bd8.png'); background-size: cover; background-position: center;"></div>
+                        <div class="card-content">
+                            <span class="type-badge">Site</span>
+                            <h4>Explicação sobre a detecção de objetos YOLO</h4>
+                            <span class="channel-name">datacamp</span>
+                            <p>Entenda a detecção de objetos YOLO, seus benefícios e evolução nos últimos anos.</p>
+                        </div>
+                    </a>
+
+                </div>
+
+                <!-- Seta Direita da lista -->
+                <button id="js-next-btn" class="nav-arrow" aria-label="Próximo">
+                    <img src="./assets/icons/next-arrow.svg" alt="Seta Direita" class="arrow-icon">
+                </button>
+            </div>
+        </section>
+
     </main>
 
-    <footer>
-        <div class="container">
-            <p>Desenvolvido pela equipa do Projeto Olhos de Águia</p>
+    <footer class="main-footer" style="margin-top: 80px;">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <!-- Ícone Programming da lista -->
+                <img src="./assets/icons/programming-icon.svg" alt="" width="20" height="20" class="btn-icon">
+                <span>Desenvolvido por Equipe Eagle's Eye</span>
+            </div>
+            <div class="footer-line"></div>
+            <p class="copyright">© 2026 Jhon Victor</p>
         </div>
     </footer>
 
+    <!-- Caminho atualizado para o JS -->
     <script src="js/main.js"></script>
 </body>
 </html>

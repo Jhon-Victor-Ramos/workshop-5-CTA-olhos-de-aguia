@@ -1,145 +1,874 @@
-:root {
-    --bg-main: #0d1117;
-    --bg-card: #161b22;
-    --border-color: #30363d;
-    --text-primary: #c9d1d9;
-    --text-secondary: #8b949e;
-    --accent: #58a6ff;
-    --accent-hover: #1f6feb;
+@charset "UTF-8";
+
+/* ---- IMPORTAÇÃO DE FONTES ---- */
+/* Work Sans */
+@font-face {
+    font-family: 'Work Sans';
+    src: url('./assets/fonts/work-sans-v24-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Work Sans';
+    src: url('./assets/fonts/work-sans-v24-latin-300.woff2') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Work Sans';
+    src: url('./assets/fonts/work-sans-v24-latin-600.woff2') format('woff2');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: system-ui, -apple-system, sans-serif;
+/* Fira Sans */
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('./assets/fonts/fira-sans-v18-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('./assets/fonts/fira-sans-v18-latin-500.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Fira Code */
+@font-face {
+    font-family: 'Fira Code';
+    src: url('./assets/fonts/fira-code-v27-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* Prompt */
+@font-face {
+    font-family: 'Prompt';
+    src: url('./assets/fonts/prompt-v12-latin-regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* --- VARIÁVEIS --- */
+:root {
+    --G1: #050505; 
+    --G2: #161616; 
+    --G3: #2A2A2A; 
+    --G5: #6B6B6B;
+    --G6: #9E9E9E; 
+    --G7: #C7C7C7; 
+    --G8: #EDEDED;
+    --GD: #FFB800;
+    --GR1-grad: linear-gradient(90deg, #10B981 0%, #047857 100%);
+    --OR1-grad: linear-gradient(90deg, #F05032 0%, #8F2412 100%);
+    --PR1-grad: linear-gradient(90deg, #9500FF 0%, #53008E 100%);
+    --GD1-grad: linear-gradient(90deg, #FFB800 0%, #FFFFFF 100%);
+    --GD2-grad: linear-gradient(180deg, #FFCF53 0%, #FF9900 100%);
+}
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    -webkit-font-smoothing: antialiased;
+}
+
+html {
+    overflow-x: hidden;
 }
 
 body {
-    background-color: var(--bg-main);
-    color: var(--text-primary);
-    line-height: 1.6;
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.hero {
-    padding: 60px 0 40px;
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 40px;
-}
-
-.hero h1 {
-    font-size: 2.5rem;
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.badge {
-    display: inline-block;
-    background-color: var(--border-color);
-    padding: 4px 12px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    margin-top: 15px;
-    color: var(--text-secondary);
-}
-
-.card {
-    background-color: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 24px;
-    margin-bottom: 24px;
-}
-
-.card h2 {
-    color: #ffffff;
-    margin-bottom: 10px;
-}
-
-.action-group {
-    margin-top: 20px;
+    background-color: var(--G1);
+    color: var(--G7);
+    font-family: 'Work Sans', sans-serif;
+    width: 100%;
+    min-height: 100vh;
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    overflow-x: hidden;
+    position: relative;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border-radius: 6px;
+/* --- BACKGROUND --- */
+.bg-wrapper { 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    z-index: -1; 
+}
+.grid-lines {
+    position: absolute; 
+    width: 100%; 
+    height: 100%;
+    background-image: linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px), 
+                      linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 80px 80px;
+    -webkit-mask-image: radial-gradient(ellipse at top right, black 0%, transparent 65%);
+    mask-image: radial-gradient(ellipse at top right, black 0%, transparent 65%);
+}
+
+
+.god-rays {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 350px;
+    height: 400px;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+    transform: scaleX(-1);
+}
+
+
+.god-rays::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 300px;
+    height: 400px;
+    background:
+        linear-gradient(150deg, rgba(255, 255, 255, 0.08) 0%, transparent 50%),
+        linear-gradient(160deg, rgba(255, 255, 255, 0.12) 0%, transparent 60%),
+        linear-gradient(170deg, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+    filter: blur(8px);
+    mix-blend-mode: plus-lighter;
+}
+
+/* --- HEADER --- */
+.main-header { 
+    width: 100vw;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 24px 20px; 
+    display: flex;
+}
+
+.header-pill {
+    display: inline-flex; 
+    align-items: center; 
+    gap: 10px;
+    padding: 8px 20px;
+    height: 40px;
+    border-radius: 16px;
+    
+    background: rgba(235, 235, 235, 0.12);
+    
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    box-shadow: 
+        0px 0px 4px rgba(246, 246, 246, 0.25),
+        inset 0px -2px 2px rgba(246, 246, 246, 0.25),
+        inset 0px 2px 4px rgba(246, 246, 246, 0.25);
+}
+
+.header-logo { 
+    height: 40px;
+    width: auto;
+}
+
+.header-text { 
+    color: #FFF; 
+    font-size: 14px; 
+    font-family: 'Work Sans', sans-serif; 
+    font-weight: 400;
+}
+
+.header-text { 
+    color: #FFF; 
+    font-size: 14px; 
+    font-family: 'Work Sans', sans-serif; 
+    font-weight: 400;
+    
+    display: flex;  
+    align-items: center;
+}
+
+.divider { 
+    display: block;
+    width: 1.5px;
+    height: 24px; 
+    margin: 0 10px;
+    
+    background: linear-gradient(
+        to bottom, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.4) 50%, 
+        rgba(255, 255, 255, 0) 100%
+    );
+}
+
+/* --- MAIN CANVAS --- */
+.content-canvas {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    flex-grow: 1;
+}
+
+.profile { 
+    text-align: center; 
+    margin-bottom: 56px; 
+    padding-top: 20px; 
+}
+.photo-container {
+    width: 160px; 
+    height: 160px; 
+    border-radius: 50%; 
+    margin: 0 auto 20px;
+    background-color: var(--G3);
+    box-shadow: 0 0 30px rgba(201, 201, 201, 0.15);
+    overflow: hidden;
+}
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center; 
+}
+.profile-name { font-family: 'Prompt', sans-serif; font-size: 24px; font-weight: 400; color: #FFF; }
+.profile-degree { color: var(--G6); font-size: 16px; }
+
+.hero { text-align: center; margin-bottom: 56px; }
+.hero-title { font-size: 24px; font-weight: 400; color: var(--G7); }
+.hero-line { 
+    width: 100%; 
+    max-width: 360px;
+    height: 1px;
+    margin: 16px auto; 
+    background: linear-gradient(90deg, rgba(246, 246, 246, 0.02) 0%, #F6F6F6 50%, rgba(246, 246, 246, 0.02) 100%);
+}
+
+/* --- GRID E STACK --- */
+/* --- GRID E STACK (LAYOUT DESKTOP) --- */
+.main-grid { 
+    display: grid; 
+    /* AQUI ESTÁ A MÁGICA DAS 2 COLUNAS: 1.4fr para cursos, 1fr para redes */
+    grid-template-columns: 1.4fr 1fr; 
+    gap: 48px; 
+    width: 100%; 
+}
+
+.column-header { 
+    display: flex; 
+    align-items: center; 
+    gap: 12px; 
+    margin-bottom: 24px; 
+    justify-content: flex-start; /* Alinhado à esquerda no PC */
+}
+
+.column-header h3 { 
+    font-size: 18px; 
+    font-weight: 400; 
+    letter-spacing: 0.4px; 
+}
+
+.stack { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 16px; 
+}
+
+/* --- ANATOMIA DO BOTÃO GLASSMORPHISM (NÍVEL PREMIUM) --- */
+.pill-wrapper { display: flex; align-items: stretch; position: relative; }
+.external-sep { margin-right: -1px; z-index: 2; display: flex; align-items: center; }
+
+.pill-button {
+    display: flex; 
+    align-items: center; 
+    gap: 16px;
+    width: 100%; 
+    min-height: 64px;
+    padding: 12px 20px 12px 16px;
+    border-radius: 16px;
     text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.2s;
-    cursor: pointer;
-}
-
-.btn-primary {
-    background-color: var(--accent);
-    color: #ffffff;
-}
-
-.btn-primary:hover {
-    background-color: var(--accent-hover);
-}
-
-.btn-outline {
-    background-color: transparent;
-    border: 1px solid var(--accent);
-    color: var(--accent);
-}
-
-.btn-outline:hover {
-    background-color: rgba(88, 166, 255, 0.1);
-}
-
-/* Bloco de Código */
-.code-block {
-    background-color: var(--bg-main);
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    margin: 20px 0;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
     overflow: hidden;
 }
 
-.code-header {
+.pill-meta {
     display: flex;
     justify-content: space-between;
+}
+
+/* Glassmorphism com Saturação e Volume */
+.glass {
+    background: rgba(23, 23, 23, 0.2); /* Fundo um pouco mais denso para dar contraste */
+    
+    /* O saturate(120%) puxa as cores do fundo e deixa o vidro mais vibrante */
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    
+    /* Sombras que criam a espessura e elevação da peça */
+    box-shadow: 
+        0px 12px 30px rgba(0, 0, 0, 0.4),               /* Sombra externa pesada e suave */
+        inset 0px 0px 4px 1px rgba(255, 255, 255, 0.05),/* Chanfro interno geral */
+        inset 0px 1px 2px rgba(255, 255, 255, 0.15);    /* Luz batendo firme no topo */
+}
+
+/* A MAGIA: Reflexo especular diagonal (Luz da Janela) */
+.glass::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; /* Deixa o clique passar para o botão */
+    background: linear-gradient(to left top, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 45%);
+    z-index: 1;
+}
+
+/* A MAGIA: Reflexo ambiental do teto */
+.glass::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background: linear-gradient(to bottom, rgba(255,255,255,0.04) 0%, rgba(255,255,255,0) 100%);
+    z-index: 1;
+}
+
+.pill-icon, .pill-content, .social-icon, .social-text {
+    position: relative;
+    z-index: 2; 
+    /* Adiciona leve sombra no texto para não sumir contra fundos claros que passem pelo blur */
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* 1. O botão reage quando o mouse passa no container inteiro */
+.pill-wrapper:hover .pill-button { 
+    background: rgba(255, 255, 255, 0.08); /* O vidro "acende" */
+    border: 1px solid rgba(255, 255, 255, 0.2); 
+    box-shadow: 
+        0px 16px 40px rgba(0, 0, 0, 0.6),              /* Sombra aumenta projetando o botão pra frente */
+        inset 0px 0px 4px 1px rgba(255, 255, 255, 0.05),
+        inset 0px 2px 4px rgba(255, 255, 255, 0.25);   /* Luz de topo fica mais forte */
+    transform: translateY(-3px);
+}
+
+/* O separador externo acompanha o movimento (mantido igual, funciona muito bem) */
+.pill-wrapper:hover .external-sep svg {
+    height: 22px; 
+    transform: translateY(-3px); 
+    filter: brightness(1.3) drop-shadow(0 0 6px rgba(255,255,255,0.3)); 
+}
+.pill-cat, .pill-dur { font-size: 11px; color: var(--G6); letter-spacing: 0.2px; }
+
+/* Separador Interno 4x1 Rígido */
+.inner-sep { 
+    width: 12px; 
+    height: 1px; 
+    margin: -2px 0 1px; 
+}
+.sep-green { background: var(--GR1-grad); }
+.sep-orange { background: var(--OR1-grad); }
+.sep-purple { background: var(--PR1-grad); }
+
+.pill-title { font-size: 18px; font-weight: 600; color: var(--G8); line-height: 1.4; }
+
+/* Redes Sociais Adaptadas */
+.social { padding-left: 12px; min-height: 48px; }
+.social-icon { width: 24px; }
+.social-text { font-size: 16px; font-weight: 600; color: var(--G8); text-decoration: underline; }
+
+/* --- FOOTER --- */
+.main-footer {
+    width: 100%; 
+    padding: 32px 20px; 
+    background: var(--G2);
+    position: relative; 
+    overflow: hidden;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.main-footer::before {
+    content: ""; 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%;
+    background-image: url('./assets/icons/footer-texture.svg');
+    background-size: cover;
+    opacity: 0.1; 
+    pointer-events: none;
+}
+
+.footer-content { position: relative; z-index: 1; text-align: center; width: 100%; }
+.footer-brand { display: flex; align-items: center; justify-content: center; gap: 8px; font-family: 'Fira Sans', sans-serif; font-size: 14px; margin-bottom: 12px; color: var(--G7); }
+.footer-line { width: 100%; max-width: 241px; height: 1px; margin: 0 auto 12px; opacity: 0.5; background: linear-gradient(90deg, rgba(246, 246, 246, 0.02) 0%, #F6F6F6 50%, rgba(246, 246, 246, 0.02) 100%); }
+.copyright { font-family: 'Fira Sans', sans-serif; font-size: 12px; color: var(--G6); letter-spacing: 0.5px; }
+
+
+/* =========================================
+   PÁGINA 2: DETALHES DO CURSO
+   ========================================= */
+
+/* --- HEADER AJUSTES --- */
+.header-with-back {
+    justify-content: center; 
+    position: relative;
+}
+.header-with-back .header-pill {
+    margin-left: 0;
+}
+.back-button {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
     align-items: center;
-    padding: 8px 15px;
-    background-color: #21262d;
-    border-bottom: 1px solid var(--border-color);
-    font-size: 0.85rem;
-    color: var(--text-secondary);
+    gap: 4px;
+    color: var(--G6);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+.back-button:hover {
+    color: #FFF;
 }
 
-.btn-copy {
-    background: none;
-    border: none;
-    color: var(--accent);
-    cursor: pointer;
+/* --- HERO DO CURSO --- */
+.course-hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+    margin: 40px 0 80px;
+}
+.hero-image-container {
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.course-hero-img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, 0.1));
+}
+
+.course-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 360px; /* A Caixa Invisível */
+}
+
+.course-meta { 
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%; 
+    margin-bottom: 8px; 
+}
+
+.category-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.course-title {
+    font-family: 'Prompt', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #FFF;
+    line-height: 1.1;
+    margin-top: 4px;
+    margin-bottom: 24px;
+    width: 100%;
+}
+
+.btn-download {
+    align-self: flex-end; /* Ancora à direita */
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--GD2-grad);
+    color: var(--G1);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 13px;
     font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 24px;
+    border: 4px solid rgba(246, 246, 246, 0.30);
+    box-shadow: 0 4px 15px rgb(255, 184, 0, .3), inset 0 2px 4px #C7C7C7;
+    transition: all 0.3s ease;
+}
+.btn-download:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 4px 15px rgb(255, 184, 0, .7), inset 0 2px 4px #C7C7C7;
 }
 
-pre {
-    padding: 15px;
+/* --- CARROSSEL E HEADER DE MATERIAIS --- */
+.materials-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+    position: relative;
+    width: 100%;
+}
+.materials-header::after {
+    content: '';
+    position: absolute;
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 250px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+.section-icon {
+    width: 24px;
+}
+
+.carousel-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+
+.carousel-track {
+    display: flex;
+    gap: 20px;
     overflow-x: auto;
+    padding-bottom: 24px;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+    width: 100%; /* Garante que o trilho não quebre o layout */
+}
+.carousel-track::-webkit-scrollbar { display: none; }
+
+/* O Card do Material */
+.material-card {
+    min-width: 300px;
+    max-width: 300px;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    
+    /* Transições do Observer */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), 
+                box-shadow 0.4s ease, 
+                opacity 0.4s ease;
+    opacity: 0.4; /* Estado apagado */
+    transform: scale(0.95);
 }
 
-code {
-    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-    color: var(--text-primary);
+/* O Card Ativo (no meio da tela) */
+.material-card.active-card {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0px 0px 20px rgba(255, 255, 255, 0.1), 
+                inset 0px 0px 4px rgba(246, 246, 246, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-footer {
+/* Área da Imagem */
+.thumb-container {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3);
+}
+.thumb-placeholder {
+    width: 100%;
+    height: 100%;
+    background: #C7C7C7;
+}
+.material-thumb {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Conteúdo do Card */
+.card-content { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 10px; 
+    flex-grow: 1; 
+}
+.cat-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.card-sep {
+    width: 100%;
+    height: 2px;
+    border-radius: 2px;
+    opacity: 0.8;
+}
+
+.material-title {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--G8);
+    line-height: 1.4;
+    text-decoration: none;
+}
+.material-title:hover { text-decoration: underline dashed 1.5px var(--G6); }
+
+.title-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: .1s ease-in-out all;
+}
+
+
+.external-icon {
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    margin-top: 2px;
+    opacity: 0.5; 
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.material-title:hover .external-icon {
+    opacity: 1;
+    transform: translate(2px, -2px);
+    filter: brightness(1.2);
+}
+
+.material-desc {
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--G6);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* --- ESTILO DAS SETAS DO CARROSSEL --- */
+.nav-arrow {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: none; 
+    padding: 8px; 
+}
+.arrow-icon {
+    width: 24px;
+    height: 24px;
+    opacity: 0.5; 
+    transition: all 0.3s ease;
+}
+.nav-arrow:hover .arrow-icon { 
+    opacity: 1; 
+    filter: brightness(1.5) drop-shadow(0 0 8px rgba(255,255,255,0.3)); 
+}
+.nav-arrow:disabled .arrow-icon {
+    opacity: 0.15;
+    cursor: not-allowed;
+    filter: none;
+}
+.nav-arrow:disabled {
+    cursor: not-allowed;
+}
+
+/* --- SEÇÃO DE PALESTRANTES --- */
+.speakers-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 64px; /* Afasta da seção de materiais */
+}
+
+/* No celular: Grid de 3 colunas (2 linhas) */
+.speakers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 16px;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.speaker-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     text-align: center;
-    padding: 40px 0;
-    color: var(--text-secondary);
-    font-size: 0.9rem;
-    border-top: 1px solid var(--border-color);
-    margin-top: 40px;
+}
+
+.speaker-photo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: var(--G3);
+    border: 2px solid rgba(255,255,255,0.15); 
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+
+.speaker-card:hover .speaker-photo {
+    transform: translateY(-4px) scale(1.05);
+    border-color: rgba(255,255,255,0.4);
+    box-shadow: 0 0 16px var(--G3);
+}
+
+.speaker-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center; 
+}
+
+.speaker-name {
+    font-size: 13px;
+    color: var(--G8);
+    font-weight: 500;
+    line-height: 1.2;
+}
+
+.speaker-link:visited, .speaker-link {
+    color: var(--G6);
+}
+
+/* Adaptação para o Desktop */
+@media (min-width: 768px) {
+    .speakers-grid {
+        grid-template-columns: repeat(6, 1fr);
+        max-width: 800px;
+        gap: 24px;
+    }
+    .speaker-photo {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+/* --- RESPONSIVIDADE PÁGINA 2 --- */
+/* --- CELULARES (Até 640px) --- */
+@media (max-width: 640px) {
+    /* Ajustes Finos Página 2 */
+    .header-with-back { justify-content: flex-end; }
+    .course-hero {
+        flex-direction: column;
+        gap: 24px;
+        text-align: center;
+        margin: 24px 0 56px;
+    }
+    .course-info { align-items: center; }
+    .course-title { font-size: 28px; text-align: center; }
+    .course-meta { width: 75%; }
+    .btn-download { align-self: center; }
+    .carousel-track {
+        padding-left: calc(50% - 150px);
+        padding-right: calc(50% - 150px);
+    }
+}
+
+/* --- CELULARES E TABLETS (Até 768px) --- */
+@media (max-width: 768px) {
+    .content-canvas { padding: 0 24px; }
+    
+    /* Layout Home: Força 1 coluna */
+    .main-grid {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        grid-template-columns: 1fr; 
+        gap: 48px;
+    }
+    
+    /* Centraliza títulos das seções */
+    .column-header { justify-content: center; }
+
+    /* Redes Sociais viram Grid 2x2 */
+    .main-grid .grid-column:nth-child(2) .stack {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    .grid-column:first-child { width: 100%; }
+    .grid-column:first-child .stack .pill-wrapper .pill-button.glass {
+        width: 100%;
+        justify-content: space-evenly;
+    }
+    .main-grid .grid-column:nth-child(2) .pill-button {
+        padding: 8px 12px;
+        gap: 8px;
+        min-height: 48px;
+    }
+    .social-text {
+        font-size: 11px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+/* --- COMPUTADORES (Acima de 768px) --- */
+@media (min-width: 768px) {
+    /* Exibe as setas do carrossel */
+    .nav-arrow { display: block; } 
+    
+    /* Faz o carrossel vazar o limite de 700px para caber as setas */
+    .carousel-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        width: 100%;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Trava o trilho para a matemática do 1º card centralizado funcionar */
+    .carousel-track {
+        max-width: 650px; 
+        padding-left: calc(50% - 150px);
+        padding-right: calc(50% - 150px);
+    }
 }
