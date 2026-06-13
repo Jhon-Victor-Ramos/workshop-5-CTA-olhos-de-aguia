@@ -1,4 +1,4 @@
-# 🦅 Projeto Olhos de Águia (*Eagle's Eye*) | Workshop no 5º CTA
+# Projeto Olhos de Águia (*Eagle's Eye*) | Workshop no 5º CTA
 
 > **Visão computacional (simples) embarcada e autonomia em drones de arquitetura aberta**
 
