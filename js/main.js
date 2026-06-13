@@ -26,17 +26,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. LÓGICA DE EXTRAÇÃO AUTOMÁTICA DE THUMBNAILS (YOUTUBE) ---
+// --- 2. LÓGICA DE EXTRAÇÃO AUTOMÁTICA DE THUMBNAILS (YOUTUBE) ---
     const materialCards = document.querySelectorAll('.material-card');
 
-    // Função com Regex para isolar o ID do vídeo em qualquer formato de link do YouTube
+    // Função de Regex mais robusta (retirada do seu segundo código)
     function getYouTubeId(url) {
-        const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+        if (!url) return null;
+        const regExp = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/i;
         const match = url.match(regExp);
-        return (match && match[2].length === 11) ? match[2] : null;
+        return (match && match[1].length === 11) ? match[1] : null;
     }
 
     materialCards.forEach(card => {
-        const link = card.getAttribute('href');
+        // CORREÇÃO 1: Busca a tag 'a' dentro do card para conseguir ler o 'href'
+        const linkElement = card.querySelector('a.material-title') || card.querySelector('a');
+        const link = linkElement ? linkElement.getAttribute('href') : null;
         
         // Verifica se o link é do YouTube
         if (link && (link.includes('youtube.com') || link.includes('youtu.be'))) {
@@ -44,16 +48,18 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Se encontrou o ID do vídeo, busca a capa em alta qualidade
             if (videoId) {
+                // CORREÇÃO 2: URL corrigida com o domínio do YouTube e o ID correspondente
                 const thumbUrl = `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
-                const thumbContainer = card.querySelector('.card-thumb');
+                
+                // CORREÇÃO 3: Ajustado o seletor de '.card-thumb' para '.thumb-container'
+                const thumbContainer = card.querySelector('.thumb-container') || card.querySelector('.card-thumb');
                 
                 if (thumbContainer) {
-                    // Remove o ícone SVG e aplica a capa como background
                     thumbContainer.innerHTML = ''; 
                     thumbContainer.style.backgroundImage = `url('${thumbUrl}')`;
                     thumbContainer.style.backgroundSize = 'cover';
                     thumbContainer.style.backgroundPosition = 'center';
-                    thumbContainer.style.backgroundColor = '#000'; // Fundo preto caso demore a carregar
+                    thumbContainer.style.backgroundColor = '#000'; // Fundo preto de segurança
                 }
             }
         }

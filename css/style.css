@@ -525,6 +525,22 @@ body {
     box-shadow: 0 4px 15px rgb(255, 184, 0, .7), inset 0 2px 4px #C7C7C7;
 }
 
+.shadow-gray {
+    box-shadow: 0 4px 15px rgb(33, 38, 45, .6);
+}
+.shadow-gray:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 4px 15px rgb(44, 51, 59);
+}
+
+.shadow-blue {
+    box-shadow: 0 4px 15px rgb(88, 166, 255, .09);
+}
+.shadow-blue:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 4px 15px rgb(88, 166, 255, .2);
+}
+
 /* --- CARROSSEL E HEADER DE MATERIAIS --- */
 .materials-header {
     display: flex;
